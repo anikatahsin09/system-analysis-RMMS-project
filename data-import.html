@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import External Data</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1542273917363-3b18107e44c5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .bg-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 flex flex-col min-h-screen">
+
+    <nav class="bg-green-800 bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="landingpage.html" class="text-2xl font-bold text-white">🌲 Forest Sentinel</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Add Field Report</a>
+                    <a href="dashboard.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="alerts.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Alert Rules</a>
+                    <a href="data-import.html" class="bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Import Data</a>
+                    <a href="sensor.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Sensor API</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="bg-overlay flex-1 flex items-center justify-center p-4">
+        <div class="max-w-4xl mx-auto bg-gray-900 bg-opacity-75 backdrop-filter backdrop-blur-sm p-8 rounded-lg shadow-2xl text-center">
+            <h2 class="text-3xl font-bold text-green-400 mb-6">Import External Data</h2>
+            <p class="text-gray-300 text-lg mb-8">
+                Connect to external APIs to seamlessly import weather, carbon, and detailed map data into the system.
+            </p>
+            <div class="space-y-6">
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col sm:flex-row items-center justify-between transition-all duration-300 hover:bg-gray-700">
+                    <div class="text-left flex-1 mb-4 sm:mb-0">
+                        <h3 class="text-xl font-bold text-white">Weather Data (OpenWeatherMap)</h3>
+                        <p class="text-sm text-gray-400 mt-1">Imports real-time and forecast weather conditions for specific locations.</p>
+                    </div>
+                    <button id="import-weather-btn" class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold transition">Import Data</button>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col sm:flex-row items-center justify-between transition-all duration-300 hover:bg-gray-700">
+                    <div class="text-left flex-1 mb-4 sm:mb-0">
+                        <h3 class="text-xl font-bold text-white">Carbon Footprint Data</h3>
+                        <p class="text-sm text-gray-400 mt-1">Retrieves carbon offset and sequestration data from environmental sources.</p>
+                    </div>
+                    <button id="import-carbon-btn" class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold transition">Import Data</button>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col sm:flex-row items-center justify-between transition-all duration-300 hover:bg-gray-700">
+                    <div class="text-left flex-1 mb-4 sm:mb-0">
+                        <h3 class="text-xl font-bold text-white">Map & Topography (GIS)</h3>
+                        <p class="text-sm text-gray-400 mt-1">Imports high-resolution raster and vector data for detailed mapping.</p>
+                    </div>
+                    <button id="import-map-btn" class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-semibold transition">Import Data</button>
+                </div>
+                <div id="status-message" class="mt-8 text-lg font-bold"></div>
+            </div>
+        </div>
+    </div>
+    <script src="data-import.js"></script>
+</body>
+</html>

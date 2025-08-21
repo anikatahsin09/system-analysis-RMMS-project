@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Alert Rules</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://plus.unsplash.com/premium_photo-1687879794744-99e2898cab0d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .bg-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 flex flex-col min-h-screen">
+
+    <nav class="bg-green-800 bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="landingpage.html" class="text-2xl font-bold text-white">🌲 Forest Sentinel</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Add Field Report</a>
+                    <a href="dashboard.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="alerts.html" class="bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Alert Rules</a>
+                    <a href="data-import.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Import Data</a>
+                    <a href="sensor.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Sensor API</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="bg-overlay flex-1 flex items-center justify-center p-4">
+        <div class="bg-black bg-opacity-75 p-8 rounded-lg shadow-2xl w-full max-w-4xl">
+            <h2 class="text-3xl font-bold text-green-400 text-center mb-6">Set Custom Alert Rules</h2>
+            <p class="text-gray-300 text-lg text-center mb-8">
+                Configure automated alerts based on sensor data thresholds and geographic areas to get notified of critical events.
+            </p>
+            <form id="alertForm" class="space-y-6">
+                <div>
+                    <label for="alert-name" class="block text-sm font-medium text-gray-300">Alert Name</label>
+                    <input type="text" id="alert-name" name="alert_name" placeholder="e.g., High Temperature Alert - North Sector" class="mt-1 block w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500" required>
+                </div>
+                <div class="space-y-4 p-4 bg-gray-800 rounded-lg">
+                    <h3 class="text-lg font-semibold text-green-400">Environmental Thresholds</h3>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label for="temp-threshold" class="block text-sm font-medium text-gray-300">Temperature (°C)</label>
+                            <input type="number" id="temp-threshold" name="temp_threshold" placeholder="e.g., 30" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div class="flex-1">
+                            <label for="humidity-threshold" class="block text-sm font-medium text-gray-300">Humidity (%)</label>
+                            <input type="number" id="humidity-threshold" name="humidity_threshold" placeholder="e.g., 20" class="mt-1 block w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        <div class="flex-1">
+                            <label for="air-quality-threshold" class="block text-sm font-medium text-gray-300">Air Quality</label>
+                            <select id="air-quality-threshold" name="air_quality_threshold" class="mt-1 block w-full pl-3 pr-10 py-2 bg-gray-700 border border-gray-600 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500">
+                                <option value="">Select a condition...</option>
+                                <option value="hazardous">Hazardous</option>
+                                <option value="unhealthy">Unhealthy</option>
+                                <option value="moderate">Moderate</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label for="area-coordinates" class="block text-sm font-medium text-gray-300">Geographic Area (Coordinates)</label>
+                    <input type="text" id="area-coordinates" name="area_coordinates" placeholder="e.g., 34.0522,-118.2437" class="mt-1 block w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500">
+                    <p class="mt-1 text-xs text-gray-400">Enter a single point or a series of points to define a polygon.</p>
+                </div>
+                <div>
+                    <label for="recipients" class="block text-sm font-medium text-gray-300">Recipient Email(s)</label>
+                    <input type="email" id="recipients" name="recipients" placeholder="e.g., manager@forestry.com,alerts@ngo.org" class="mt-1 block w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md text-gray-100 focus:ring-green-500 focus:border-green-500" multiple required>
+                    <p class="mt-1 text-xs text-gray-400">Separate multiple emails with commas.</p>
+                </div>
+                <div>
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-bold text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all">
+                        Create Alert Rule
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="alerts.js"></script>
+</body>
+</html>

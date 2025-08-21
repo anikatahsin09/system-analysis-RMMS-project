@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forestry Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1542273917363-3b18107e44c5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .bg-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-100 flex flex-col min-h-screen">
+
+    <nav class="bg-green-800 bg-opacity-80 backdrop-filter backdrop-blur-lg shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="dashboard.html" class="text-2xl font-bold text-white">🌲 Forest Sentinel</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="index.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Add Field Report</a>
+                    <a href="dashboard.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="alerts.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Alert Rules</a>
+                    <a href="data-import.html" class="hover:bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Import Data</a>
+                    <a href="sensor.html" class="bg-green-700 px-3 py-2 rounded-md text-sm font-medium">Sensor API</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="bg-overlay flex-1 flex items-center justify-center p-4">
+        <div id="api" class="max-w-4xl mx-auto bg-gray-900 bg-opacity-75 backdrop-filter backdrop-blur-sm p-8 rounded-lg shadow-2xl text-center">
+            <h2 class="text-3xl font-bold text-green-400 mb-4">API Endpoint for Sensor Data</h2>
+            <p class="text-gray-300 text-lg mb-6">
+                This endpoint allows automated systems, such as **IoT sensors and drones**, to securely send data to our platform.
+            </p>
+            <div class="bg-gray-800 p-6 rounded-lg text-left font-mono text-sm overflow-x-auto">
+                <p class="text-green-400">POST /api/v1/sensor-data</p>
+                <br>
+                <p class="text-gray-300">
+                    <span class="text-white">{</span>
+                    <br>
+                    <span class="ml-4">"device_id": "sensor_001",</span>
+                    <br>
+                    <span class="ml-4">"timestamp": "2025-08-18T08:00:00Z",</span>
+                    <br>
+                    <span class="ml-4">"location": {</span>
+                    <br>
+                    <span class="ml-8">"latitude": 34.052235,</span>
+                    <br>
+                    <span class="ml-8">"longitude": -118.243683</span>
+                    <br>
+                    <span class="ml-4">},</span>
+                    <br>
+                    <span class="ml-4">"data": {</span>
+                    <br>
+                    <span class="ml-8">"temperature": 25.5,</span>
+                    <br>
+                    <span class="ml-8">"humidity": 60,</span>
+                    <br>
+                    <span class="ml-8">"air_quality": "good"</span>
+                    <br>
+                    <span class="ml-4">},</span>
+                    <br>
+                    <span class="ml-4">"image_url": "https://example.com/drone_image_123.jpg"</span>
+                    <br>
+                    <span class="text-white">}</span>
+                </p>
+            </div>
+            <p class="text-gray-400 text-sm mt-4">
+                Data can be sent as JSON or CSV packets. Drone images should be uploaded to a CDN and the URL included in the payload.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
