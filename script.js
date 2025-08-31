@@ -1,3 +1,5 @@
+// Anika + Eshad Worked
+
 // --- Global Variable Declarations ---
 // Select all the necessary HTML elements from the DOM
 const form = document.getElementById('reportForm');
