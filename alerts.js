@@ -1,4 +1,4 @@
-// Anika
+// Anika part
 document.addEventListener('DOMContentLoaded', () => {
     const alertForm = document.getElementById('alertForm');
 
